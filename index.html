@@ -467,6 +467,29 @@
     }
     .skill-item:hover { color: var(--text); border-color: var(--border-mid); }
 
+    /* Featured skill card — RAG/LLM gets extra weight */
+    .skill-group--featured {
+      border-color: rgba(0,201,167,0.2);
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0,201,167,0.04) 100%);
+    }
+    .skill-group--featured .skill-group-label {
+      font-size: 11px;
+    }
+    .skill-group-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.55;
+      opacity: 0.85;
+    }
+    /* Accent-highlighted pills for primary skills */
+    .skill-item--accent {
+      color: var(--accent);
+      border-color: rgba(0,201,167,0.25);
+      background: var(--accent-dim);
+      font-weight: 500;
+    }
+    .skill-item--accent:hover { color: var(--accent); border-color: var(--accent); }
+
     /* ── EXPERIENCE ─────────────────────────────────────────────── */
     #experience .exp-list { display: flex; flex-direction: column; gap: 0; }
     .exp-item {
@@ -690,13 +713,15 @@
             <div class="star-item">
               <div class="star-label">Action</div>
               <p class="star-text">
-                Built <strong>real-time data acquisition pipelines</strong> connecting PLCs, sensors, and
-                edge devices to centralized analytics. Developed <strong>n8n automation workflows</strong>
-                for ingestion, alerting, and AI inference routing. Architected <strong>MCP + RAG pipelines</strong>
-                — grounding LLM agents in proprietary maintenance manuals and historical fault logs —
-                to create an Industrial Copilot operators query in natural language. Monitoring dashboards
-                tied together equipment health KPIs, fault detection, and predictive maintenance
-                recommendations in a single view.
+                Built <strong>production RAG pipelines</strong> using <strong>LangChain</strong> — embedding proprietary
+                maintenance manuals and fault logs with <strong>Gemma and OpenAI embedding models</strong>,
+                storing vectors in <strong>Qdrant and ChromaDB</strong>, and serving grounded operator
+                responses through a retrieval + re-ranking chain. Layered <strong>MCP agent pipelines</strong>
+                on top, giving LLMs structured tool access to live sensor streams and operational databases.
+                Deployed <strong>local LLMs via Ollama</strong> for air-gapped factory environments.
+                Automated the full data flow — acquisition from PLCs and sensors through to AI inference
+                and alerting — using <strong>n8n</strong> orchestration workflows. Tied everything together
+                in equipment health dashboards covering KPIs, fault detection, and predictive maintenance signals.
               </p>
             </div>
             <div class="star-item">
@@ -782,77 +807,105 @@
       <p class="section-label reveal">Technical skills</p>
       <div class="skills-grid">
 
-        <div class="skill-group reveal-scale d1">
-          <p class="skill-group-label">AI / IIoT</p>
-          <div class="skill-items">
-            <span class="skill-item">n8n</span>
-            <span class="skill-item">MCP</span>
-            <span class="skill-item">LLM Agents</span>
-            <span class="skill-item">RAG</span>
-            <span class="skill-item">Predictive Maintenance</span>
-            <span class="skill-item">Data Acquisition</span>
-            <span class="skill-item">Anomaly Detection</span>
+        <!-- RAG & LLM Pipelines — featured card -->
+        <div class="skill-group skill-group--featured reveal-scale d1">
+          <p class="skill-group-label">RAG &amp; LLM Pipelines</p>
+          <p class="skill-group-desc">Built production RAG systems grounding LLMs in proprietary domain knowledge — chunking, embedding, retrieval, re-ranking, and generation end-to-end.</p>
+          <div class="skill-items" style="margin-top:0.75rem">
+            <span class="skill-item skill-item--accent">LangChain</span>
+            <span class="skill-item skill-item--accent">RAG</span>
+            <span class="skill-item skill-item--accent">MCP</span>
+            <span class="skill-item">Prompt Engineering</span>
+            <span class="skill-item">Context Window Management</span>
+            <span class="skill-item">Re-ranking</span>
+            <span class="skill-item">Chunking Strategies</span>
+            <span class="skill-item">Tool / Function Calling</span>
           </div>
         </div>
 
         <div class="skill-group reveal-scale d2">
-          <p class="skill-group-label">Python Libraries</p>
-          <div class="skill-items">
-            <span class="skill-item">NumPy</span>
-            <span class="skill-item">Pandas</span>
-            <span class="skill-item">Matplotlib</span>
-            <span class="skill-item">scikit-learn</span>
-            <span class="skill-item">PySerial</span>
-            <span class="skill-item">FastAPI</span>
+          <p class="skill-group-label">LLMs &amp; Embedding Models</p>
+          <p class="skill-group-desc">Worked with cloud and locally-hosted models in production environments.</p>
+          <div class="skill-items" style="margin-top:0.75rem">
+            <span class="skill-item skill-item--accent">Ollama</span>
+            <span class="skill-item">GPT-4 / text-embedding-3</span>
+            <span class="skill-item">Gemma &amp; Gemma Embeddings</span>
+            <span class="skill-item">HuggingFace Transformers</span>
+            <span class="skill-item">Anthropic Claude</span>
+            <span class="skill-item">Local model deployment</span>
           </div>
         </div>
 
         <div class="skill-group reveal-scale d3">
+          <p class="skill-group-label">Vector Databases</p>
+          <p class="skill-group-desc">Hands-on with multiple vector stores for semantic search and retrieval.</p>
+          <div class="skill-items" style="margin-top:0.75rem">
+            <span class="skill-item skill-item--accent">Qdrant</span>
+            <span class="skill-item skill-item--accent">ChromaDB</span>
+            <span class="skill-item">Pinecone</span>
+            <span class="skill-item">FAISS</span>
+            <span class="skill-item">Similarity Search</span>
+            <span class="skill-item">Metadata Filtering</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal-scale d4">
+          <p class="skill-group-label">AI Agents &amp; Automation</p>
+          <p class="skill-group-desc">Orchestrated multi-step agent workflows connected to live industrial data sources.</p>
+          <div class="skill-items" style="margin-top:0.75rem">
+            <span class="skill-item skill-item--accent">MCP Agent Pipelines</span>
+            <span class="skill-item">n8n</span>
+            <span class="skill-item">LLM Agent Orchestration</span>
+            <span class="skill-item">Tool-use Agents</span>
+            <span class="skill-item">Anomaly Detection</span>
+            <span class="skill-item">Predictive Maintenance</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal-scale d5">
+          <p class="skill-group-label">Python &amp; ML Libraries</p>
+          <div class="skill-items">
+            <span class="skill-item">NumPy</span>
+            <span class="skill-item">Pandas</span>
+            <span class="skill-item">scikit-learn</span>
+            <span class="skill-item">Matplotlib</span>
+            <span class="skill-item">FastAPI</span>
+            <span class="skill-item">PySerial</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal-scale d6">
           <p class="skill-group-label">Embedded / FPGA</p>
           <div class="skill-items">
             <span class="skill-item">STM32</span>
             <span class="skill-item">Cyclone V FPGA</span>
             <span class="skill-item">Nios V</span>
-            <span class="skill-item">GPIO / Timers</span>
-            <span class="skill-item">PWM / ADC</span>
-            <span class="skill-item">EEPROM</span>
-            <span class="skill-item">Interrupts</span>
-          </div>
-        </div>
-
-        <div class="skill-group reveal-scale d4">
-          <p class="skill-group-label">Programming</p>
-          <div class="skill-items">
-            <span class="skill-item">C</span>
-            <span class="skill-item">C++</span>
-            <span class="skill-item">Python</span>
-            <span class="skill-item">Embedded C</span>
             <span class="skill-item">Verilog HDL</span>
-            <span class="skill-item">MATLAB</span>
-            <span class="skill-item">Simulink</span>
+            <span class="skill-item">GPIO / Timers / PWM</span>
+            <span class="skill-item">ADC / EEPROM</span>
           </div>
         </div>
 
-        <div class="skill-group reveal-scale d5">
-          <p class="skill-group-label">Controls / Systems</p>
+        <div class="skill-group reveal-scale d1">
+          <p class="skill-group-label">Controls &amp; Systems</p>
           <div class="skill-items">
             <span class="skill-item">PID / PD Control</span>
             <span class="skill-item">Root Locus</span>
             <span class="skill-item">Transfer Functions</span>
+            <span class="skill-item">MATLAB / Simulink</span>
             <span class="skill-item">Real-time Control</span>
-            <span class="skill-item">Sensor Feedback</span>
           </div>
         </div>
 
-        <div class="skill-group reveal-scale d6">
-          <p class="skill-group-label">Tools</p>
+        <div class="skill-group reveal-scale d2">
+          <p class="skill-group-label">Languages &amp; Tools</p>
           <div class="skill-items">
+            <span class="skill-item">Python</span>
+            <span class="skill-item">C / C++</span>
+            <span class="skill-item">Embedded C</span>
             <span class="skill-item">Quartus Prime</span>
-            <span class="skill-item">Platform Designer</span>
-            <span class="skill-item">Signal Tap</span>
             <span class="skill-item">Git</span>
             <span class="skill-item">VS Code</span>
-            <span class="skill-item">Ashling RiscFree</span>
           </div>
         </div>
 
@@ -878,11 +931,12 @@
             <p class="exp-role">AI &amp; Industrial IoT Engineer Intern</p>
             <p class="exp-company">E-VAS Telecom</p>
             <ul class="exp-bullets">
-              <li>Designed end-to-end IIoT solutions connecting <strong>PLCs, industrial sensors</strong>, and centralized AI analytics for cement, energy, and process-industry clients.</li>
-              <li>Built <strong>real-time data acquisition pipelines</strong> for temperature, vibration, pressure, and energy consumption from industrial assets.</li>
-              <li>Developed <strong>n8n automation workflows</strong> for ingestion, alerting, AI inference, and cross-system integration across factory operations.</li>
-              <li>Architected <strong>MCP + RAG AI agent pipelines</strong> connecting LLMs with proprietary knowledge bases for an Industrial Copilot used by plant operators.</li>
-              <li>Built monitoring dashboards covering equipment health KPIs, predictive insights, fault detection, and maintenance optimization.</li>
+              <li>Architected <strong>production RAG pipelines</strong> using LangChain — ingesting proprietary maintenance manuals and fault logs, chunking and embedding via <strong>Gemma Embeddings and OpenAI text-embedding-3</strong>, storing in <strong>Qdrant and ChromaDB</strong>, and serving grounded responses through a retrieval + re-ranking chain to plant operators.</li>
+              <li>Built <strong>MCP-based LLM agent pipelines</strong> giving language models structured, tool-mediated access to live sensor streams, operational databases, and knowledge repositories — enabling natural-language querying of real-time industrial data.</li>
+              <li>Deployed and managed <strong>local LLMs via Ollama</strong> (Gemma, LLaMA variants) for air-gapped industrial environments where cloud API calls were restricted, balancing latency, cost, and model capability.</li>
+              <li>Designed <strong>real-time IIoT data acquisition pipelines</strong> connecting PLCs and industrial sensors (temperature, vibration, pressure, energy) through edge devices to centralized analytics — feeding both dashboards and AI inference layers.</li>
+              <li>Developed <strong>n8n automation workflows</strong> orchestrating data ingestion, anomaly alerting, AI inference routing, and cross-system integration across cement, energy, and process-industry client deployments.</li>
+              <li>Built <strong>equipment health dashboards</strong> surfacing KPIs, fault signals, and predictive maintenance recommendations derived from sensor data and LLM-generated analysis — shifting client operations from reactive to condition-based maintenance.</li>
             </ul>
           </div>
         </div>
